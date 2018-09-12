@@ -6,6 +6,6 @@ import com.Yooni.Yooni.Entity.comment;
 
 public interface CommentService {
 
-	public List<comment> GetComment(Long oid);
+	public List<comment> GetComments(Long oid);
 	
 }

@@ -8,6 +8,6 @@ import com.Yooni.Yooni.Entity.comment;
 
 public interface CommentRepository extends JpaRepository<comment, Long> {
 
-	List<comment> findByOrd_IdIs(Long oid);
+	List<comment> findByOrdIdIs(Long oid);
 	
 }

@@ -23,8 +23,14 @@ public class order implements Serializable{
 	@Column(name="creator")
 	private Long uid;
 	
+	@Column(name="creator_name")
+	private String uname;
+	
 	@Column(name="title", nullable=false, length=50)
 	private String title;
+	
+	@Column(name="ordpic", nullable=false, length=255)
+	private String ordpic;
 	
 	@Lob
 	@Column(name = "content" ,nullable=false,columnDefinition = "TEXT")
@@ -51,11 +57,14 @@ public class order implements Serializable{
 	private Date destime;
 
 	public order() {}
-	
-	public order(Long uid, String title, String content, Integer price, Integer req, Integer cur, Integer state,
-			Date destime) {
+
+	public order(Long uid, String uname, String title, String ordpic, String content, Integer price, Integer req, Integer cur,
+			Integer state, Date destime) {
+		super();
 		this.uid = uid;
+		this.uname = uname;
 		this.title = title;
+		this.ordpic = ordpic;
 		this.content = content;
 		this.price = price;
 		this.req = req;
@@ -64,11 +73,12 @@ public class order implements Serializable{
 		this.destime = destime;
 	}
 
-	@Override
-	public String toString() {
-		return "order [id=" + id + ", uid=" + uid + ", title=" + title + ", content=" + content + ", price=" + price
-				+ ", req=" + req + ", cur=" + cur + ", state=" + state + ", creattime=" + creattime + ", destime="
-				+ destime + "]";
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
 	public Long getId() {
@@ -93,6 +103,14 @@ public class order implements Serializable{
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getOrdpic() {
+		return ordpic;
+	}
+
+	public void setOrdpic(String ordpic) {
+		this.ordpic = ordpic;
 	}
 
 	public String getContent() {
@@ -150,6 +168,8 @@ public class order implements Serializable{
 	public void setDestime(Date destime) {
 		this.destime = destime;
 	}
+	
+	
 	
 	
 	

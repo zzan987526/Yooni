@@ -32,25 +32,43 @@ public class comment implements Serializable{
 	@JoinTable(name = "CommentUser",joinColumns = { @JoinColumn(name = "cid")},inverseJoinColumns ={@JoinColumn(name = "uid") })
 	private User user;
 	
-	@OneToOne(fetch= FetchType.EAGER)
-	@JoinTable(name = "CommentOrder",joinColumns = { @JoinColumn(name = "cid")},inverseJoinColumns ={@JoinColumn(name = "oid") })
-	private order ord;
+	private Long ordId;
 
+	private Long yid;
+	
 	private String content;
 	
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP) 
 	private Date creattime;
 
-	public comment(User user, order ord, String content) {
+	public comment() {};
+	
+	public comment(User user, Long ordId, Long yid, String content) {
+		super();
 		this.user = user;
-		this.ord = ord;
+		this.ordId = ordId;
+		this.yid = yid;
+		this.content = content;
+	}
+
+	public Long getYid() {
+		return yid;
+	}
+
+	public void setYid(Long yid) {
+		this.yid = yid;
+	}
+
+	public comment(User user, Long ord, String content) {
+		this.user = user;
+		this.ordId = ord;
 		this.content = content;
 	}
 
 	@Override
 	public String toString() {
-		return "comment [id=" + id + ", user=" + user + ", ord=" + ord + ", content=" + content + ", creattime="
+		return "comment [id=" + id + ", user=" + user + ", ord=" + ordId + ", content=" + content + ", creattime="
 				+ creattime + "]";
 	}
 
@@ -70,12 +88,12 @@ public class comment implements Serializable{
 		this.user = user;
 	}
 
-	public order getOrd() {
-		return ord;
+	public Long getOrd() {
+		return ordId;
 	}
 
-	public void setOrd(order ord) {
-		this.ord = ord;
+	public void setOrd(Long ord) {
+		this.ordId = ord;
 	}
 
 	public String getContent() {

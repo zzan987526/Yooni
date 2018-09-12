@@ -31,13 +31,16 @@ public class User implements Serializable{
 	@Column(name="password", nullable=false, length=30)
 	private String password;
 	
+	@Column(name="nickname", nullable=true, length=50)
+	private String nickname;
+	
 	@Column(name="email", nullable=true, length=30)
 	private String email;
 	
 	@Column(name="credit", nullable=false)
 	private int credit;
 	
-	@Column(name="avatar",nullable=true,length=50)
+	@Column(name="avatar",nullable=true,length=255)
 	private String avatar;
 	
 	@Column(name="phone", nullable=true,length=11)
@@ -51,12 +54,15 @@ public class User implements Serializable{
 	
 	public User() {}
 	
-	public User(Long id,String username,String password,String email,int credit,String avatar,String phone,int privilege) {
-		this.id = id;
+	public User(String username, String password, String nickname, String email, int credit, String avatar, String phone,
+			int privilege) {
+		super();
 		this.username = username;
 		this.password = password;
+		this.nickname = nickname;
 		this.email = email;
 		this.credit = credit;
+		this.avatar = avatar;
 		this.phone = phone;
 		this.privilege = privilege;
 	}
@@ -71,6 +77,14 @@ public class User implements Serializable{
 				",phone=" + phone + 
 				",creattime=" + creattime + 
 				",privilege=" + privilege + "]";
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public Long getId() {

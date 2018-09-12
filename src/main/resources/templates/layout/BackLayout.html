@@ -1,0 +1,81 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<link rel="alternate icon" type="image/png" href="@{i/favicon.png}">
+	<link rel="stylesheet" th:href="@{css/amazeui.min.css}"/>
+	<style>
+	.my-footer {
+      border-top: 1px solid #eeeeee;
+      padding: 10px 0;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .f{
+      position: fixed;
+      top: 51px;
+    }
+	</style>
+</head>
+<body>
+	<header class="am-topbar am-topbar-fixed-top" layout:fragment="topnav">
+	  <div class="am-container">
+	    <h1 class="am-topbar-brand">
+	      <a href="#">Yooni</a>
+	    </h1>
+	  </div>
+	</header>
+	
+	<div class="am-container" style="margin-top: 30px">
+		<div class="am-u-md-3" >
+			<ul class="am-nav" id="sidenav">
+			  <li class="am-active"><a href="#">首页</a></li>
+			  <li><a href="#">开始使用</a></li>
+			  <li><a href="#">按需定制</a></li>
+			  <li><a href="#">用户管理</a></li>
+			</ul>
+		</div>
+		
+		<div class="am-u-md-9">
+			<div layout:fragment="contents"></div>
+		</div>
+	</div>
+	
+	
+	<div layout:fragment="foot"> 
+		<footer class="my-footer">
+		  <p>Yooni<br><small>© Copyright XXX. by the AmazeUI Team.</small></p>
+		</footer>
+	</div>
+	
+	
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script th:src="@{js/amazeui.min.js}"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			var toTopHeight = $("#sidenav").offset().top;
+			$(window).scroll(function(){
+		       //      获得滚动上去的距离
+		        var st= $(document).scrollTop();
+		        if(st>toTopHeight){
+		            $("#sidenav").addClass('f');
+		        }else{
+		            $('#sidenav').removeClass('f');
+		        }
+		    });
+		});
+	</script>
+	
+</body>
+</html>
